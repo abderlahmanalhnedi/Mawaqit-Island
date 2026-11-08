@@ -9,8 +9,8 @@ BIN="$APP/Contents/MacOS/MawaqitIsland"
 mkdir -p "$(dirname "$BIN")" "$APP/Contents/Resources"
 cp "$ROOT/Info.plist" "$APP/Contents/Info.plist"
 SDK="$(xcrun --sdk macosx --show-sdk-path)"
-SOURCES=(Sources/MawaqitCore.swift Sources/NotchGeometry.swift Sources/IslandModel.swift Sources/IslandViews.swift Sources/MawaqitIslandApp.swift)
-FLAGS=(-swift-version 5 -O -parse-as-library -sdk "$SDK" -framework AppKit -framework SwiftUI -framework Combine -framework QuartzCore)
+SOURCES=(Sources/MawaqitCore.swift Sources/NotchGeometry.swift Sources/IslandModel.swift Sources/LaunchAtLogin.swift Sources/IslandViews.swift Sources/MawaqitIslandApp.swift)
+FLAGS=(-swift-version 5 -O -parse-as-library -sdk "$SDK" -framework AppKit -framework SwiftUI -framework Combine -framework QuartzCore -framework ServiceManagement)
 if [[ "${UNIVERSAL:-0}" == "1" ]]; then
   mkdir -p build/arch
   for arch in x86_64 arm64; do
