@@ -1,0 +1,32 @@
+name: Publish first community release v0.4.1
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-v041.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test
+        run: bash scripts/test.sh
+      - name: Build universal app
+        run: UNIVERSAL=1 bash scripts/build.sh
+      - name: Package app
+        run: ditto -c -k --sequesterRsrc --keepParent 'build/Mawaqit Island.app' 'build/Mawaqit-Island-macOS-universal.zip'
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v0.4.1 >/dev/null 2>&1; then
+            echo "Release v0.4.1 already exists — no duplicate created."
+            exit 0
+          fi
+          gh release create v0.4.1 'build/Mawaqit-Island-macOS-universal.zip' \
+            --target "$GITHUB_SHA" \
+            --title "Mawaqit Island v0.4.1" \
+            --notes-file docs/RELEASE_NOTES_v0.4.1.md
