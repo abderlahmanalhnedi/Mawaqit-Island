@@ -10,13 +10,15 @@
 ## التثبيت — بدون Terminal
 
 1. افتح صفحة [**Releases**](https://github.com/abderlahmanalhnedi/Mawaqit-Island/releases/latest).
-2. حمّل ملف **`Mawaqit-Island-macOS-universal.zip`**.
-3. فك الضغط، واسحب **Mawaqit Island.app** إلى مجلد **Applications**.
-4. افتح التطبيق، اختر مسجدك، ثم حرّك الماوس إلى منتصف أعلى الشاشة.
+2. حمّل **`Mawaqit-Island-macOS-universal.dmg`** (ابتداءً من v0.4.2). الإصدارات السابقة تتوفر كملف ZIP.
+3. افتح DMG واسحب **Mawaqit Island.app** إلى **Applications**. في حالة ZIP، فك الضغط وانقل التطبيق إلى Applications.
+4. افتح التطبيق من Applications، اختر مسجدك، وحرّك المؤشر إلى أعلى منتصف الشاشة.
 
-**مهم عند التشغيل لأول مرة:** هذه النسخة المجتمعية **غير موثّقة من Apple**. إذا منع macOS فتحها، اضغط بزر الفأرة الأيمن على التطبيق واختر **Open**. وإذا لزم، افتح **System Settings → Privacy & Security → Open Anyway** ثم وافق. لا تعطّل حماية Gatekeeper على مستوى النظام.
+**تحذير macOS:** ملف DMG لا يلغي تحذير Apple. التطبيق المجتمعي غير موثّق من Apple، لذلك إذا منع macOS فتحه، وبعد التأكد من أنك حملته من المشروع الصحيح، افتح **System Settings → Privacy & Security → Open Anyway** وأكد التشغيل. لا تعطل Gatekeeper بالكامل.
 
-**التوافق:** macOS 13 أو أحدث، معالجات Intel وApple Silicon، مع كاميرا Notch أو بدونها.
+**التشغيل التلقائي:** افتح **Preferences → Appearance & interaction** وفعّل **Launch at login**. سيعمل التطبيق تلقائيًا بعد تسجيل الدخول إلى الماك عند تشغيله من جديد. الخيار معطل افتراضيًا ويمكن إيقافه لاحقًا.
+
+**المتطلبات:** macOS 13+ مع Intel أو Apple Silicon. لا يحتاج تثبيت DMG إلى Terminal.
 
 ## المميزات
 
