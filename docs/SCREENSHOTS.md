@@ -1,13 +1,22 @@
-# Screenshots / Screenshots / صور التطبيق
+# 🌙 Mawaqit Island — Screenshots / Bilder / صور التطبيق
 
-The six original screenshots provided by the project author on 8 November 2026 cover Arabic, English and German language modes, the main island, and the settings window.
+Actual screenshots of **Mawaqit Island v0.4.1** captured on a Mac, 8 November 2026. Times are from the author's configured mosque; the app displays the times for each user's chosen mosque.
 
-**To add them to GitHub**, upload the optimized screenshot files under `docs/screenshots/` and add the image links to the language README files. Keep screenshots free from personal information or sensitive account data.
+## 🇩🇪 Deutsch
+| Insel | Einstellungen |
+|---|---|
+| ![Mawaqit Island deutsch](screenshots/island-de.webp) | ![Einstellungen deutsch](screenshots/preferences-de.webp) |
 
-Suggested captions:
-- Island — Arabic
-- Island — English
-- Island — German
-- Preferences — mosque selection and appearance
+## 🇬🇧 English
+| Island | Preferences |
+|---|---|
+| ![Mawaqit Island English](screenshots/island-en.webp) | ![Preferences English](screenshots/preferences-en.webp) |
 
-Once the images have been uploaded, remove the temporary "being prepared" wording from the README files.
+## 🇸🇦 العربية
+| الجزيرة | الإعدادات |
+|---|---|
+| ![جزيرة مواقيت الصلاة](screenshots/island-ar.webp) | ![الإعدادات](screenshots/preferences-ar.webp) |
+
+Screenshots are supplied by the project owner, resized and exported as optimized WebP. No stock photographs are used.
+
+[⬇️ Download for macOS](https://github.com/abderlahmanalhnedi/Mawaqit-Island/releases/latest) · [README English](../README.md) · [Deutsch](../README.de.md) · [العربية](../README.ar.md)

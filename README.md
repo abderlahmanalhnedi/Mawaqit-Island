@@ -33,7 +33,11 @@ Open the moon icon in the menu bar → **Preferences**. Choose **Find on the web
 
 ## Screenshots
 
-Example screenshots from the app are available in the [screenshot gallery instructions](docs/SCREENSHOTS.md). The pictures are being prepared for the repository; the downloadable app is available independently.
+| Island · live countdown | Preferences · choose your mosque |
+|---|---|
+| ![Mawaqit Island in English](docs/screenshots/island-en.webp) | ![Mawaqit Island settings in English](docs/screenshots/preferences-en.webp) |
+
+[All screenshots in Arabic, English and German](docs/SCREENSHOTS.md).
 
 ## For developers
 

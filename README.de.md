@@ -33,7 +33,11 @@ Auf das Mondsymbol in der Menüleiste → **Preferences** klicken. Mit **Im Web 
 
 ## Screenshots
 
-Hinweise zu den App-Bildern findest du unter [Screenshots](docs/SCREENSHOTS.md). Die Bilder werden für das Repository vorbereitet.
+| Gebetszeiten-Insel | Einstellungen |
+|---|---|
+| ![Mawaqit Island auf Deutsch](docs/screenshots/island-de.webp) | ![Mawaqit Island Einstellungen](docs/screenshots/preferences-de.webp) |
+
+[Alle Screenshots auf Deutsch, Englisch und Arabisch](docs/SCREENSHOTS.md).
 
 ## Für Entwickler
 
