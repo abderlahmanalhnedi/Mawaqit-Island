@@ -10,13 +10,17 @@ Mawaqit Island ist eine kostenlose, unabhängige Mac-App mit **Live-Countdown** 
 ## Installation – ohne Terminal
 
 1. Öffne [**Releases**](https://github.com/abderlahmanalhnedi/Mawaqit-Island/releases/latest).
-2. Lade **`Mawaqit-Island-macOS-universal.zip`** herunter.
-3. Entpacke die ZIP-Datei und ziehe **Mawaqit Island.app** in den Ordner **Programme (Applications)**.
-4. Starte die App, wähle deine Moschee und bewege die Maus zur oberen Bildschirmmitte.
+2. Lade **`Mawaqit-Island-macOS-universal.dmg`** herunter (ab v0.4.2). Falls noch kein DMG vorhanden ist, nimm die **ZIP**.
+3. Öffne die DMG und ziehe **Mawaqit Island.app** auf den Ordner **Applications** (bei ZIP: entpacken und nach **Programme** kopieren).
+4. Starte die App aus **Programme**, wähle deine Moschee und bewege die Maus zur oberen Bildschirmmitte.
 
-**Wichtig beim ersten Start:** Die Community-Version ist **nicht von Apple notarisiert**. Falls macOS die App blockiert: Im Finder mit rechter Maustaste auf die App → **Öffnen**. Falls nötig: **Systemeinstellungen → Datenschutz & Sicherheit → Dennoch öffnen**, dann bestätigen. Den Gatekeeper bitte **nicht global deaktivieren**.
+**Wichtig beim ersten Start:** Die Community-Version ist **nicht von Apple notarisiert**. Falls macOS die App blockiert, versuche sie einmal zu öffnen und gehe anschließend zu **Systemeinstellungen → Datenschutz & Sicherheit → Dennoch öffnen**. Bestätige den Dialog. Nur fortfahren, wenn du die Datei aus dem offiziellen Repository geladen und geprüft hast. Den Gatekeeper bitte **nicht global deaktivieren**.
 
 **Voraussetzungen:** macOS 13 oder neuer · Intel und Apple Silicon · mit oder ohne Notch.
+
+## Automatisch nach dem Anmelden starten
+
+In **Preferences → Appearance & interaction** die Option **„Beim Anmelden starten“** aktivieren. Die App startet dann nach dem nächsten Login automatisch (nicht vor der Benutzeranmeldung). Diese Option ist standardmäßig deaktiviert und kann jederzeit in den macOS-Anmeldeobjekten geändert werden.
 
 ## Funktionen
 
