@@ -9,14 +9,16 @@ Mawaqit Island is a free, independent macOS app that displays the next prayer, a
 
 ## Install — no Terminal required
 
-1. Open **[Releases](https://github.com/abderlahmanalhnedi/Mawaqit-Island/releases/latest)**.
-2. Download **`Mawaqit-Island-macOS-universal.zip`**.
-3. Double-click the ZIP, then drag **Mawaqit Island.app** into your **Applications** folder.
-4. Open it, choose your mosque, and move the mouse to the top center of the screen.
+1. Open [**Releases**](https://github.com/abderlahmanalhnedi/Mawaqit-Island/releases/latest).
+2. Download **`Mawaqit-Island-macOS-universal.dmg`** (from v0.4.2). For previous versions, download the **ZIP**.
+3. Open the DMG and drag **Mawaqit Island.app** onto **Applications**. For the ZIP, unzip and copy the app into **Applications**.
+4. Open the app from Applications, choose a mosque and hover at the top center of the screen.
 
-**First launch security notice:** This community build is **ad-hoc signed, not Apple-notarized**. If macOS prevents opening, try Control-click / right-click the app in Finder → **Open**. If needed, go to **System Settings → Privacy & Security → Open Anyway**, then confirm. Do not turn off Gatekeeper system-wide.
+**Security on first launch:** This community build is ad-hoc signed and **not notarized by Apple**. A DMG does not remove the Gatekeeper warning. If macOS blocks the app, after verifying the official download, open **System Settings → Privacy & Security → Open Anyway** and confirm. Do not turn off Gatekeeper globally.
 
-**Supported:** macOS 13+ · Intel and Apple Silicon · Macs with or without a notch.
+**Launch automatically after restart:** In **Preferences → Appearance & interaction**, turn on **Launch at login**. The app opens after you log in to macOS. It is **off by default** and can be disabled at any time.
+
+**Requirements:** macOS 13 or later · Intel and Apple Silicon · notch optional. No Terminal required to install the DMG.
 
 ## What it does
 
