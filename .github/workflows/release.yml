@@ -11,12 +11,16 @@ jobs:
       - uses: actions/checkout@v4
       - run: bash scripts/test.sh
       - run: UNIVERSAL=1 bash scripts/build.sh
-      - run: ditto -c -k --sequesterRsrc --keepParent 'build/Mawaqit Island.app' 'build/Mawaqit-Island-macOS-universal.zip'
+      - name: Package ZIP
+        run: ditto -c -k --sequesterRsrc --keepParent 'build/Mawaqit Island.app' 'build/Mawaqit-Island-macOS-universal.zip'
+      - name: Package DMG
+        run: bash scripts/package-dmg.sh
       - name: Create GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${GITHUB_REF_NAME}" \
+            'build/Mawaqit-Island-macOS-universal.dmg' \
             'build/Mawaqit-Island-macOS-universal.zip' \
             --title "Mawaqit Island ${GITHUB_REF_NAME}" \
-            --notes 'Community build for Intel and Apple Silicon. Ad-hoc signed; not notarized. Follow README for first launch.'
+            --notes 'Universal macOS app for Intel and Apple Silicon. DMG: drag Mawaqit Island to Applications. In Preferences you can opt in to Launch at Login. This community build is ad-hoc signed and NOT Apple-notarized: macOS may block first launch. After verifying the download, use System Settings > Privacy & Security > Open Anyway. Do not disable Gatekeeper globally.'
