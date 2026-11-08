@@ -2,6 +2,7 @@ name: Publish unsigned community release
 on:
   push:
     tags: ['v*']
+    branches: ['release-v*']
 permissions:
   contents: write
 jobs:
@@ -9,18 +10,37 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
-      - run: bash scripts/test.sh
-      - run: UNIVERSAL=1 bash scripts/build.sh
+      - name: Validate release version
+        id: version
+        shell: bash
+        run: |
+          VERSION="${GITHUB_REF_NAME#release-}"
+          if [[ ! "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Unexpected release ref: ${GITHUB_REF_NAME}" >&2
+            exit 1
+          fi
+          echo "tag=$VERSION" >> "$GITHUB_OUTPUT"
+      - name: Foundation tests
+        run: bash scripts/test.sh
+      - name: Build universal macOS application
+        run: UNIVERSAL=1 bash scripts/build.sh
       - name: Package ZIP
         run: ditto -c -k --sequesterRsrc --keepParent 'build/Mawaqit Island.app' 'build/Mawaqit-Island-macOS-universal.zip'
       - name: Package DMG
         run: bash scripts/package-dmg.sh
-      - name: Create GitHub Release
+      - name: Publish release with installers
         env:
           GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.tag }}
+        shell: bash
         run: |
-          gh release create "${GITHUB_REF_NAME}" \
+          if gh release view "$VERSION" >/dev/null 2>&1; then
+            echo "Release $VERSION already exists; skipping duplicate."
+            exit 0
+          fi
+          gh release create "$VERSION" \
             'build/Mawaqit-Island-macOS-universal.dmg' \
             'build/Mawaqit-Island-macOS-universal.zip' \
-            --title "Mawaqit Island ${GITHUB_REF_NAME}" \
-            --notes 'Universal macOS app for Intel and Apple Silicon. DMG: drag Mawaqit Island to Applications. In Preferences you can opt in to Launch at Login. This community build is ad-hoc signed and NOT Apple-notarized: macOS may block first launch. After verifying the download, use System Settings > Privacy & Security > Open Anyway. Do not disable Gatekeeper globally.'
+            --target "$GITHUB_SHA" \
+            --title "Mawaqit Island $VERSION" \
+            --notes 'Universal macOS app for Intel and Apple Silicon. Install: open DMG, drag Mawaqit Island to Applications, then launch it from Applications. In Preferences, Launch at Login is an opt-in setting (off by default). IMPORTANT: this community build is ad-hoc signed and NOT notarized by Apple. macOS may block first launch. If you trust the official download, use System Settings > Privacy & Security > Open Anyway. Never disable Gatekeeper globally. Not affiliated with MAWAQIT or Apple.'
