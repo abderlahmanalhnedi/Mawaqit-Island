@@ -361,6 +361,8 @@ struct PreferencesView: View {
     @State private var query = ""
     @State private var manualURL = ""
     @State private var manualError: String?
+    @State private var launchAtLogin = false
+    @State private var loginItemError: String?
 
     private var accent: Color { IslandStyle.accent(model.preferences.theme) }
     private func label(_ ar: String, _ en: String, _ de: String) -> String {
@@ -397,7 +399,7 @@ struct PreferencesView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Mawaqit Island")
                             .font(.system(size: 25, weight: .bold))
-                        Text("A community-built island for your mosque · v0.4.1")
+                        Text("A community-built island for your mosque · v0.4.2")
                             .font(.system(size: 12)).foregroundStyle(.secondary)
                     }
                     Spacer()
@@ -467,6 +469,25 @@ struct PreferencesView: View {
                         Picker("Display", selection: $model.preferences.display) {
                             ForEach(IslandPreferences.Display.allCases) { option in Text(option.rawValue).tag(option) }
                         }
+                        Toggle(label("تشغيل التطبيق بعد تسجيل الدخول", "Launch at login", "Beim Anmelden starten"),
+                               isOn: $launchAtLogin)
+                            .onChange(of: launchAtLogin) { newValue in
+                                do {
+                                    try LaunchAtLogin.setEnabled(newValue)
+                                    launchAtLogin = LaunchAtLogin.enabled
+                                    loginItemError = nil
+                                } catch {
+                                    launchAtLogin = LaunchAtLogin.enabled
+                                    loginItemError = error.localizedDescription
+                                }
+                            }
+                        if let loginItemError {
+                            Text(label("تعذر تفعيل بدء التشغيل. راجع عناصر تسجيل الدخول في إعدادات النظام.",
+                                       "Couldn't change login startup. Review Login Items in System Settings.",
+                                       "Autostart konnte nicht geändert werden. Bitte Anmeldeobjekte in den Systemeinstellungen prüfen.")
+                                 + " " + loginItemError)
+                                .font(.caption).foregroundStyle(.orange)
+                        }
                         Toggle("Open when hovering near the notch", isOn: $model.preferences.showOnHover)
                         Toggle("Keep compact pill always visible (optional)", isOn: $model.preferences.alwaysShowCompact)
                         Toggle("Show iqama when published", isOn: $model.preferences.showIqama)
@@ -514,6 +535,7 @@ struct PreferencesView: View {
             .frame(maxWidth: 740, alignment: .leading)
         }
         .frame(minWidth: 600, minHeight: 620)
+        .onAppear { launchAtLogin = LaunchAtLogin.enabled }
     }
 
     private func sectionTitle(_ title: String, symbol: String) -> some View {
