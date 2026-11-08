@@ -1,0 +1,22 @@
+name: Publish unsigned community release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash scripts/test.sh
+      - run: UNIVERSAL=1 bash scripts/build.sh
+      - run: ditto -c -k --sequesterRsrc --keepParent 'build/Mawaqit Island.app' 'build/Mawaqit-Island-macOS-universal.zip'
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            'build/Mawaqit-Island-macOS-universal.zip' \
+            --title "Mawaqit Island ${GITHUB_REF_NAME}" \
+            --notes 'Community build for Intel and Apple Silicon. Ad-hoc signed; not notarized. Follow README for first launch.'
