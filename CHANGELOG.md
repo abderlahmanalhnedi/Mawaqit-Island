@@ -1,3 +1,10 @@
+## v0.4.2 — DMG packaging and login startup (2026-11-08)
+
+- Add a **Launch at login** preference using Apple's ServiceManagement API (macOS 13+). It is off by default and requires user opt-in.
+- Build a drag-to-Applications **DMG** (and keep the universal ZIP) in GitHub Actions on macOS.
+- Update German, English and Arabic installation instructions.
+- Document that ad-hoc signed installers remain subject to macOS Gatekeeper; Developer ID signing and Apple notarization are separate future steps.
+
 ## v0.4.1 — Collapse interaction & mosque discovery (2026-11-08)
 
 - Fix expanded chevron: manual collapse now stays collapsed until pointer exits the hover zone, preventing immediate automatic re-expansion.
