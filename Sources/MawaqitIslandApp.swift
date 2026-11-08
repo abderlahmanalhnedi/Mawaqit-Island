@@ -48,7 +48,7 @@ private final class IslandController: NSObject, NSApplicationDelegate {
     private func setupMenuBar() {
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         item.button?.image = NSImage(systemSymbolName: "moon.stars.fill", accessibilityDescription: "Mawaqit Island")
-        item.button?.toolTip = "Mawaqit Island v0.4.1 — mosque prayer times"
+        item.button?.toolTip = "Mawaqit Island v0.4.2 — mosque prayer times"
         let menu = NSMenu()
         let entries: [(String, Selector)] = [
             ("Show island", #selector(showFromMenu)),
