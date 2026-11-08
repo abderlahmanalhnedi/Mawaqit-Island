@@ -2,7 +2,7 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 cd "$ROOT"
-echo "=== Mawaqit Island v0.4.1 — Community Edition ==="
+echo "=== Mawaqit Island v0.4.2 — Community Edition ==="
 bash scripts/build.sh
 APP="$ROOT/build/Mawaqit Island.app"
 DEST="$HOME/Applications"
