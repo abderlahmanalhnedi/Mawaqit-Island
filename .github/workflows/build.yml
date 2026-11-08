@@ -17,9 +17,13 @@ jobs:
         run: UNIVERSAL=1 bash scripts/build.sh
       - name: Verify architectures
         run: lipo -info 'build/Mawaqit Island.app/Contents/MacOS/MawaqitIsland'
-      - name: Package .app
+      - name: Package ZIP
         run: ditto -c -k --sequesterRsrc --keepParent 'build/Mawaqit Island.app' 'build/Mawaqit-Island-macOS-universal.zip'
+      - name: Create drag-to-Applications DMG
+        run: bash scripts/package-dmg.sh
       - uses: actions/upload-artifact@v4
         with:
-          name: Mawaqit-Island-macOS-universal
-          path: build/Mawaqit-Island-macOS-universal.zip
+          name: Mawaqit-Island-macOS-installers
+          path: |
+            build/Mawaqit-Island-macOS-universal.dmg
+            build/Mawaqit-Island-macOS-universal.zip
